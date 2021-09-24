@@ -73,3 +73,5 @@ function game() {
     userScore = 0;
     computerScore = 0;
 }
+
+game();
