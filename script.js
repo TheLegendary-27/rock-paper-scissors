@@ -11,5 +11,35 @@ function computerPlay() {
     } else {
         play = "paper";
     }
-    console.log(play);
+    return play;
 }
+
+function playOneRound(userSelection, computerSelection) {
+    userSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+    switch(userSelection) {
+        case "rock":
+            if(computerSelection === "scissors") {
+                alert("You win!");
+            } else {
+                (computerSelection === "rock") ? alert("It's a tie") : alert("You lose!");
+            }
+            break;
+        case "paper":
+            if(computerSelection === "rock") {
+                alert("You win!");
+            } else {
+                (computerSelection === "paper") ? alert("It's a tie") : alert("You lose!");
+            }
+            break;
+        case "scissors":
+            if(computerSelection === "paper") {
+                alert("You win!");
+            } else {
+                (computerSelection === "scissors") ? alert("It's a tie") : alert("You lose!");
+            }
+            break;
+    }
+    console.log(computerSelection);
+}
+
+playOneRound("", computerPlay());
