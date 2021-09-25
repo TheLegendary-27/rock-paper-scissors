@@ -69,6 +69,13 @@ function game() {
         playOneRound('', computerPlay());
         console.log(`User ${userScore} vs Computer ${computerScore}`);
     };
+    let declareWinner = function() {
+        if(userScore > computerScore) return "You win!";
+        else if(computerScore > userScore) return "You lose!";
+        else return "It's a tie.";
+    }
+
+    alert(`${declareWinner()} Final score: User ${userScore} vs Computer ${computerScore}.`);
     console.log(`Final score: User ${userScore} vs Computer ${computerScore}.`);
     userScore = 0;
     computerScore = 0;
