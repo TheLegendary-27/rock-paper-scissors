@@ -3,6 +3,22 @@
 
 let userScore = 0;
 let computerScore = 0;
+const btns = document.querySelectorAll('.btns');
+
+btns.forEach(b => {
+    b.addEventListener('click', () => {
+        playOneRound(b.textContent, computerPlay());
+        console.log(`User ${userScore} vs Computer ${computerScore}`);
+
+        if(userScore == 5 || computerScore == 5) {
+            if(userScore > computerScore) alert('You won the game!');
+            else alert('You lost the game!');
+        
+            userScore = 0;
+            computerScore = 0;
+        }
+    });
+});
 
 function computerPlay() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -18,9 +34,9 @@ function computerPlay() {
 }
 
 function playOneRound(userSelection, computerSelection) {
-    userSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+
     switch(userSelection) {
-        case "rock":
+        case "Rock":
             if(computerSelection === "scissors") {
                 alert("You win!");
                 userScore++;
@@ -31,7 +47,7 @@ function playOneRound(userSelection, computerSelection) {
                 alert("It's a tie.");
             }
             break;
-        case "paper":
+        case "Paper":
             if(computerSelection === "rock") {
                 alert("You win!");
                 userScore++;
@@ -42,7 +58,7 @@ function playOneRound(userSelection, computerSelection) {
                 alert("It's a tie.");
             }
             break;
-        case "scissors":
+        case "Scissors":
             if(computerSelection === "paper") {
                 alert("You win!");
                 userScore++;
@@ -63,22 +79,3 @@ function capitalizeString(string) {
     const length = string.length;
     return `${firstLetter + string.slice(1)}`;
 }
-
-function game() {
-    for(let i = 0; i < 5; i++) {
-        playOneRound('', computerPlay());
-        console.log(`User ${userScore} vs Computer ${computerScore}`);
-    };
-    let declareWinner = function() {
-        if(userScore > computerScore) return "You win!";
-        else if(computerScore > userScore) return "You lose!";
-        else return "It's a tie.";
-    }
-
-    alert(`${declareWinner()} Final score: User ${userScore} vs Computer ${computerScore}.`);
-    console.log(`Final score: User ${userScore} vs Computer ${computerScore}.`);
-    userScore = 0;
-    computerScore = 0;
-}
-
-game();
